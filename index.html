@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virginia SOL & Honors Daily Tutor (Grades 9–12)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #1865f2;
+      --primary-dark: #0f4ec2;
+      --primary-light: #e8f0fe;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 60px;
+    }
+
+    /* Header */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .navbar {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .live-datetime {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .live-datetime i {
+      color: var(--primary);
+    }
+
+    .grade-selector {
+      display: flex;
+      align-items: center;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .grade-selector select {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      margin-left: 6px;
+    }
+
+    .btn-parent-modal {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .btn-parent-modal:hover {
+      background: #4338ca;
+    }
+
+    /* Hero Banner */
+    .hero {
+      max-width: 1240px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #1865f2 0%, #0b3fa8 100%);
+      color: white;
+      padding: 24px 28px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .hero-text h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .hero-text p {
+      color: #dbeafe;
+      font-size: 0.95rem;
+      max-width: 650px;
+    }
+
+    .hero-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 10px 18px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .hero-badge .timer-status {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+
+    .hero-badge .timer-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-family: monospace;
+    }
+
+    /* Main Content Layout */
+    .container {
+      max-width: 1240px;
+      margin: 24px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 960px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      height: fit-content;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sidebar h2 {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .day-selector-card {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .day-selector-card label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .day-selector-card select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      font-weight: 700;
+      color: var(--primary);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .subject-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .subject-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .subject-btn:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .subject-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Workspace */
+    .workspace {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .workspace-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .lesson-meta .sol-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .lesson-meta .day-tag {
+      display: inline-block;
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      margin-left: 6px;
+      text-transform: uppercase;
+    }
+
+    .lesson-meta h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .timer-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .module-tabs {
+      display: flex;
+      border-bottom: 2px solid var(--border);
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .module-tab {
+      padding: 8px 0;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .module-tab.active {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Video Container */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #000;
+      margin-bottom: 16px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .resource-links {
+      background: var(--bg-main);
+      border-radius: 8px;
+      padding: 14px;
+      margin-top: 16px;
+    }
+
+    .resource-links h4 {
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .resource-links ul {
+      list-style-type: none;
+    }
+
+    .resource-links li {
+      margin-bottom: 6px;
+    }
+
+    .resource-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Notes Box */
+    .notes-box {
+      background: #fdfdfd;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 6px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .notes-box h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .notes-box ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .notes-box li {
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+    }
+
+    .formula-badge {
+      background: #f1f5f9;
+      font-family: monospace;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #d946ef;
+      font-size: 0.9rem;
+    }
+
+    /* Quiz Area */
+    .quiz-card {
+      margin-bottom: 18px;
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .quiz-q-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .quiz-opt {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quiz-opt:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .quiz-opt.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .quiz-opt.correct {
+      background: #ecfdf5 !important;
+      border-color: var(--success) !important;
+      color: #065f46 !important;
+    }
+
+    .quiz-opt.incorrect {
+      background: #fef2f2 !important;
+      border-color: var(--danger) !important;
+      color: #991b1b !important;
+    }
+
+    .quiz-explanation {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 6px;
+      background: #fff;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    .quiz-explanation.wrong-feedback {
+      border-left: 4px solid var(--danger);
+      background: #fff8f8;
+    }
+
+    .quiz-explanation.correct-feedback {
+      border-left: 4px solid var(--success);
+      background: #f4fdf8;
+    }
+
+    .exp-link {
+      margin-top: 6px;
+      display: block;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .exp-link:hover {
+      text-decoration: underline;
+    }
+
+    .score-banner {
+      display: none;
+      background: #ecfdf5;
+      border: 1px solid var(--success);
+      color: #065f46;
+      border-radius: 8px;
+      padding: 18px;
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    /* Modal - Parent Dashboard */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 880px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      padding: 24px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .modal-header h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #4f46e5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .stat-card .stat-val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-card .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    table th, table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table th {
+      background: var(--bg-main);
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    .badge-pass {
+      background: #ecfdf5;
+      color: #065f46;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+
+    .badge-fail {
+      background: #fef2f2;
+      color: #991b1b;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="navbar">
+      <a href="#" class="brand">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>SOL & Honors Hub</span>
+      </a>
+
+      <div class="nav-controls">
+        <div class="live-datetime">
+          <i class="fa-regular fa-clock"></i>
+          <span id="liveClockDisplay">--:--:-- --</span>
+        </div>
+
+        <div class="grade-selector">
+          <i class="fa-solid fa-layer-group text-muted"></i>
+          <select id="gradeSelect" onchange="switchGrade()">
+            <option value="9" selected>Grade 9 (Freshman)</option>
+            <option value="10">Grade 10 (Sophomore)</option>
+            <option value="11">Grade 11 (Junior)</option>
+            <option value="12">Grade 12 (Senior)</option>
+          </select>
+        </div>
+
+        <button class="btn-parent-modal" onclick="openParentModal()">
+          <i class="fa-solid fa-user-shield"></i> Parent Portal
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-card">
+      <div class="hero-text">
+        <h1 id="heroTitle">Virginia 9th Grade Daily SOL & Honors Tutor</h1>
+        <p>Daily rotating tuition schedule with historical archive access. Students can review previous days' materials or tackle today's new 15-question quiz.</p>
+      </div>
+      <div class="hero-badge">
+        <div class="timer-status">30-Min Session Timer</div>
+        <div class="timer-val" id="timerDisplay">30:00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <aside class="sidebar">
+      <!-- Daily Schedule & Archive Picker -->
+      <div class="day-selector-card">
+        <label><i class="fa-solid fa-calendar-day"></i> Select Day / Archive</label>
+        <select id="dayPicker" onchange="handleDayChange()">
+          <!-- Populated dynamically: Today + Past Days -->
+        </select>
+      </div>
+
+      <div>
+        <h2>Subjects</h2>
+        <div class="subject-list" id="subjectList"></div>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <div class="workspace-header">
+        <div class="lesson-meta">
+          <span class="sol-tag" id="solCode">SOL Code</span>
+          <span class="day-tag" id="dayBadge">Day 1</span>
+          <h2 id="lessonTitle">Topic Title</h2>
+        </div>
+        <div class="timer-controls">
+          <button class="btn btn-primary" id="timerBtn" onclick="toggleTimer()">
+            <i class="fa-solid fa-play"></i> Start 30m Session
+          </button>
+          <button class="btn btn-secondary" onclick="resetTimer()">
+            <i class="fa-solid fa-rotate-left"></i> Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="module-tabs">
+        <div class="module-tab active" onclick="switchTab('videoTab')">
+          <i class="fa-solid fa-circle-play"></i> 1. Video Lesson (12m)
+        </div>
+        <div class="module-tab" onclick="switchTab('notesTab')">
+          <i class="fa-solid fa-book-open"></i> 2. Notes & Study Material (10m)
+        </div>
+        <div class="module-tab" onclick="switchTab('quizTab')">
+          <i class="fa-solid fa-list-check"></i> 3. 15-Question SOL Quiz (8m)
+        </div>
+      </div>
+
+      <!-- Tab 1: Video -->
+      <div id="videoTab" class="tab-content active">
+        <div class="video-container">
+          <iframe id="videoFrame" src="" allowfullscreen></iframe>
+        </div>
+        <div class="resource-links">
+          <h4>Reputed Online Materials & Reference Guides</h4>
+          <ul id="curatedLinks"></ul>
+        </div>
+      </div>
+
+      <!-- Tab 2: Notes -->
+      <div id="notesTab" class="tab-content">
+        <div class="notes-box" id="studyNotesContent"></div>
+      </div>
+
+      <!-- Tab 3: Quiz -->
+      <div id="quizTab" class="tab-content">
+        <div id="quizContainer"></div>
+        <button class="btn btn-primary" id="submitQuizBtn" onclick="submitQuiz()" style="width: 100%; justify-content: center; padding: 12px; font-size: 1rem;">
+          Submit Quiz & Record Score to Parent Portal
+        </button>
+        <div class="score-banner" id="scoreBanner"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Parent Portal Modal -->
+  <div class="modal-overlay" id="parentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fa-solid fa-user-shield"></i> Parent Record & Progress Portal</h2>
+        <button class="close-btn" onclick="closeParentModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-val" id="totalQuizzesTaken">0</div>
+          <div class="stat-label">Quizzes Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="averageScore">0%</div>
+          <div class="stat-label">Average Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="masteryRate">0%</div>
+          <div class="stat-label">Mastery Rate (≥80%)</div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <h3 style="font-size: 1rem; color: var(--text-main);">Quiz Score History Log</h3>
+        <button class="btn btn-secondary" onclick="clearHistory()" style="font-size: 0.75rem; padding: 4px 8px;">
+          <i class="fa-solid fa-trash"></i> Clear Log
+        </button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Date & Time</th>
+              <th>Day / Schedule</th>
+              <th>Grade</th>
+              <th>Subject</th>
+              <th>Topic / SOL</th>
+              <th>Score</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* 1. CLOCK */
+    function updateClock() {
+      const now = new Date();
+      const options = {
+        weekday: 'short', month: 'short', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true
+      };
+      document.getElementById('liveClockDisplay').innerText = now.toLocaleString('en-US', options);
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    /* 2. MULTI-DAY CURRICULUM DATABASE (Automated Daily Rotation & Historical Archive) */
+    const dailyCurriculum = {
+      "9": {
+        "alg1": {
+          name: "Algebra I",
+          icon: "fa-calculator",
+          days: [
+            {
+              dayNum: 1,
+              title: "Multi-Step Linear Equations & Inequalities",
+              sol: "SOL A.4a / A.5",
+              videoUrl: "https://www.youtube-nocookie.com/embed/f15zA03ZBWk",
+              links: [
+                { name: "Khan Academy: Multi-step Equations", url: "https://www.khanacademy.org/math/algebra" },
+                { name: "VDOE Algebra I Practice Items", url: "https://www.doe.virginia.gov" }
+              ],
+              notes: `
+                <h3>Day 1: Multi-Step Equations & Inequalities</h3>
+                <ul>
+                  <li><strong>Distributive Property:</strong> <span class="formula-badge">a(b + c) = ab + ac</span></li>
+                  <li><strong>Inverse Operations:</strong> Maintain balance across both sides.</li>
+                  <li><strong>Inequality Flip Rule:</strong> Multiplying or dividing by a negative number flips the inequality symbol (< to >).</li>
+                </ul>
+              `,
+              quiz: [
+                { q: "Solve for x: 3(2x - 4) = 4x + 6", opts: ["x = 5", "x = 9", "x = 1", "x = -1"], ans: 1, exp: "6x - 12 = 4x + 6 -> 2x = 18 -> x = 9.", ref: "https://www.khanacademy.org" },
+                { q: "Solve the inequality: -2x + 5 < 13", opts: ["x < -4", "x > -4", "x > 4", "x < 4"], ans: 1, exp: "-2x < 8 -> Divide by -2 (flip sign): x > -4.", ref: "https://www.khanacademy.org" },
+                { q: "Solve for y: 4(y - 2) + 2y = 3(2y - 1) - 5", opts: ["y = 0", "No Solution", "All Real Numbers", "y = 5"], ans: 2, exp: "6y - 8 = 6y - 8 is an identity (All Real Numbers).", ref: "https://www.khanacademy.org" },
+                { q: "Solve for m: (m + 6) / 4 = 5", opts: ["m = 14", "m = 26", "m = 11", "m = 20"], ans: 0, exp: "m + 6 = 20 -> m = 14.", ref: "https://www.khanacademy.org" },
+                { q: "Solve: 5 - 3(x - 2) = 23", opts: ["x = -4", "x = 4", "x = -6", "x = 6"], ans: 0, exp: "11 - 3x = 23 -> -3x = 12 -> x = -4.", ref: "https://www.khanacademy.org" },
+                { q: "Solve the inequality: 3x - 7 ≥ 8", opts: ["x ≥ 5", "x ≤ 5", "x ≥ 1/3", "x ≤ -5"], ans: 0, exp: "3x ≥ 15 -> x ≥ 5.", ref: "https://www.khanacademy.org" },
+                { q: "Solve for w: 2w/3 = 10", opts: ["w = 15", "w = 20", "w = 30", "w = 5"], ans: 0, exp: "2w = 30 -> w = 15.", ref: "https://www.khanacademy.org" },
+                { q: "Solve: 7x - (2x + 5) = 15", opts: ["x = 4", "x = 2", "x = -4", "x = 10"], ans: 0, exp: "5x - 5 = 15 -> 5x = 20 -> x = 4.", ref: "https://www.khanacademy.org" },
+                { q: "Which value of x satisfies: -x/4 + 2 = 6?", opts: ["x = -16", "x = 16", "x = -8", "x = 8"], ans: 0, exp: "-x/4 = 4 -> x = -16.", ref: "https://www.khanacademy.org" },
+                { q: "Solve for p: 4p + 12 = 4(p + 3)", opts: ["p = 0", "Infinitely Many Solutions", "No Solution", "p = 3"], ans: 1, exp: "4p + 12 = 4p + 12 (Identity).", ref: "https://www.khanacademy.org" },
+                { q: "Solve for p: 2p + 8 = 2p - 4", opts: ["p = 4", "No Solution", "p = -2", "All Real Numbers"], ans: 1, exp: "Subtract 2p: 8 = -4 (False statement, No Solution).", ref: "https://www.khanacademy.org" },
+                { q: "Solve: -5(x + 2) < 20", opts: ["x > -6", "x < -6", "x > 6", "x < 6"], ans: 0, exp: "x + 2 > -4 -> x > -6.", ref: "https://www.khanacademy.org" },
+                { q: "Solve for z: 0.5z + 1.2 = 3.2", opts: ["z = 4", "z = 2", "z = 4.4", "z = 8.8"], ans: 0, exp: "0.5z = 2.0 -> z = 4.", ref: "https://www.khanacademy.org" },
+                { q: "Solve for x: (2x - 1)/3 = (x + 4)/2", opts: ["x = 14", "x = 10", "x = 7", "x = 5"], ans: 0, exp: "2(2x - 1) = 3(x + 4) -> 4x - 2 = 3x + 12 -> x = 14.", ref: "https://www.khanacademy.org" },
+                { q: "Solve: 8 - 2x ≤ 14", opts: ["x ≥ -3", "x ≤ -3", "x ≥ 3", "x ≤ 3"], ans: 0, exp: "-2x ≤ 6 -> x ≥ -3.", ref: "https://www.khanacademy.org" }
+              ]
+            },
+            {
+              dayNum: 2,
+              title: "Slope-Intercept, Point-Slope & Graphing Functions",
+              sol: "SOL A.6a / A.7",
+              videoUrl: "https://www.youtube-nocookie.com/embed/f3sI0_l8yeg",
+              links: [
+                { name: "Khan Academy: Slope & Graphing", url: "https://www.khanacademy.org/math/algebra" }
+              ],
+              notes: `
+                <h3>Day 2: Slope & Linear Relations</h3>
+                <ul>
+                  <li><strong>Slope:</strong> <span class="formula-badge">m = (y₂ - y₁) / (x₂ - x₁)</span></li>
+                  <li><strong>Slope-Intercept:</strong> <span class="formula-badge">y = mx + b</span></li>
+                  <li><strong>Point-Slope:</strong> <span class="formula-badge">y - y₁ = m(x - x₁)</span></li>
+                  <li><strong>Parallel vs Perpendicular:</strong> Parallel: $m_1 = m_2$; Perpendicular: $m_1 \cdot m_2 = -1$.</li>
+                </ul>
+              `,
+              quiz: [
+                { q: "What is the slope of the line passing through (2, 3) and (6, 11)?", opts: ["m = 1/2", "m = 2", "m = 4", "m = 8"], ans: 1, exp: "m = (11-3)/(6-2) = 8/4 = 2.", ref: "https://www.khanacademy.org" },
+                { q: "What is the y-intercept of the line 3x - 2y = 8?", opts: ["(0, -4)", "(0, 4)", "(0, 8/3)", "(0, -8/3)"], ans: 0, exp: "Set x = 0: -2y = 8 -> y = -4 -> (0, -4).", ref: "https://www.khanacademy.org" },
+                { q: "Which line is perpendicular to y = 3x + 2?", opts: ["y = 3x - 5", "y = -1/3x + 4", "y = 1/3x + 1", "y = -3x + 2"], ans: 1, exp: "Perpendicular slope is the negative reciprocal: -1/3.", ref: "https://www.khanacademy.org" },
+                { q: "What is the slope of a vertical line?", opts: ["0", "Undefined", "1", "-1"], ans: 1, exp: "Vertical lines have zero change in x (run = 0), making slope undefined.", ref: "https://www.khanacademy.org" },
+                { q: "What is the slope of a horizontal line?", opts: ["0", "Undefined", "1", "Infinity"], ans: 0, exp: "Horizontal lines have zero vertical change (rise = 0), so slope = 0.", ref: "https://www.khanacademy.org" },
+                { q: "Write the equation of a line with slope -4 passing through (0, 7):", opts: ["y = -4x + 7", "y = 7x - 4", "y = -4x - 7", "y = 4x + 7"], ans: 0, exp: "y = mx + b -> y = -4x + 7.", ref: "https://www.khanacademy.org" },
+                { q: "Find the slope of 5x + y = 10:", opts: ["m = 5", "m = -5", "m = 10", "m = -10"], ans: 1, exp: "y = -5x + 10, so slope m = -5.", ref: "https://www.khanacademy.org" },
+                { q: "Which point lies on the line y = 2x - 3?", opts: ["(2, 1)", "(1, 2)", "(0, 3)", "(3, 1)"], ans: 0, exp: "2(2) - 3 = 4 - 3 = 1.", ref: "https://www.khanacademy.org" },
+                { q: "What is the point-slope form for a line through (4, -1) with slope 3?", opts: ["y + 1 = 3(x - 4)", "y - 1 = 3(x + 4)", "y + 4 = 3(x - 1)", "y - 4 = 3(x + 1)"], ans: 0, exp: "y - (-1) = 3(x - 4) -> y + 1 = 3(x - 4).", ref: "https://www.khanacademy.org" },
+                { q: "What is the slope of a line parallel to 2x + 4y = 8?", opts: ["m = -1/2", "m = 2", "m = -2", "m = 1/2"], ans: 0, exp: "4y = -2x + 8 -> y = -1/2x + 2 -> m = -1/2.", ref: "https://www.khanacademy.org" },
+                { q: "What is the x-intercept of 2x - 5y = 10?", opts: ["(5, 0)", "(-5, 0)", "(0, -2)", "(2, 0)"], ans: 0, exp: "Set y = 0: 2x = 10 -> x = 5 -> (5, 0).", ref: "https://www.khanacademy.org" },
+                { q: "If f(x) = 3x - 5, what is f(-2)?", opts: ["-11", "-1", "1", "11"], ans: 0, exp: "f(-2) = 3(-2) - 5 = -6 - 5 = -11.", ref: "https://www.khanacademy.org" },
+                { q: "Find the slope between (-1, 4) and (3, 4):", opts: ["0", "Undefined", "8/2", "1"], ans: 0, exp: "m = (4-4)/(3 - (-1)) = 0/4 = 0.", ref: "https://www.khanacademy.org" },
+                { q: "Which equation represents direct variation?", opts: ["y = kx", "y = k/x", "y = mx + b", "xy = k"], ans: 0, exp: "Direct variation is of the form y = kx with constant of variation k.", ref: "https://www.khanacademy.org" },
+                { q: "If y varies directly with x, and y = 12 when x = 3, what is y when x = 5?", opts: ["20", "15", "25", "10"], ans: 0, exp: "k = 12/3 = 4. When x = 5, y = 4(5) = 20.", ref: "https://www.khanacademy.org" }
+              ]
+            }
+          ]
+        },
+        "res_bio": {
+          name: "Research Biology H",
+          icon: "fa-dna",
+          days: [
+            {
+              dayNum: 1,
+              title: "Scientific Method, Biochemistry & Cell Membranes",
+              sol: "SOL BIO.1 / BIO.2",
+              videoUrl: "https://www.youtube-nocookie.com/embed/URUJD5NEXC8",
+              links: [
+                { name: "NCBI Cell Biology Guide", url: "https://www.ncbi.nlm.nih.gov/books" },
+                { name: "Khan Academy: Cellular Organelles", url: "https://www.khanacademy.org/science/biology" }
+              ],
+              notes: `
+                <h3>Day 1: Research Biology - Cell Structure & Biochemistry</h3>
+                <ul>
+                  <li><strong>Mitochondria & Chloroplasts:</strong> Endosymbiotic Theory (circular DNA, 70S ribosomes).</li>
+                  <li><strong>Enzymes:</strong> Protein catalysts that lower activation energy ($E_a$).</li>
+                  <li><strong>Membrane Transport:</strong> Passive (Osmosis, Facilitated) vs Active (ATP-dependent).</li>
+                </ul>
+              `,
+              quiz: [
+                { q: "In a controlled experiment, which group receives no experimental treatment?", opts: ["Experimental Group", "Control Group", "Independent Group", "Hypothetical Group"], ans: 1, exp: "The control group serves as a baseline comparison.", ref: "https://www.khanacademy.org/science/biology" },
+                { q: "Which organelle supports the Endosymbiotic Theory with its own circular DNA?", opts: ["Ribosome", "Mitochondria", "Golgi Apparatus", "Lysosome"], ans: 1, exp: "Mitochondria and chloroplasts contain independent circular genomes.", ref: "https://www.ncbi.nlm.nih.gov/books" },
+                { q: "What happens to a plant cell in a hypertonic saltwater solution?", opts: ["It swells and bursts", "Plasmolysis occurs as water leaves", "Active transport stops", "No water moves"], ans: 1, exp: "Water exits via osmosis, shrinking the cell membrane away from the cell wall.", ref: "https://www.khanacademy.org/science/biology" },
+                { q: "Which macromolecule forms the primary bilayer of cell membranes?", opts: ["Triglycerides", "Phospholipids", "Glycogen", "Polypeptides"], ans: 1, exp: "Phospholipids form amphipathic lipid bilayers.", ref: "https://www.khanacademy.org/science/biology" },
+                { q: "How do enzymes accelerate biochemical reactions?", opts: ["Increasing thermal energy", "Lowering activation energy (Ea)", "Consuming substrate", "Altering equilibrium"], ans: 1, exp: "Enzymes stabilize the transition state, lowering Ea.", ref: "https://www.khanacademy.org/science/biology" },
+                { q: "Which variable is plotted on the X-axis of a scientific graph?", opts: ["Dependent Variable", "Independent Variable", "Controlled Variable", "Sample Size"], ans: 1, exp: "The independent variable is placed on the X-axis.", ref: "https://www.khanacademy.org/science/biology" },
+                { q: "Which organelle synthesizes ribosomal RNA (rRNA)?", opts: ["Nucleolus", "Smooth ER", "Centrosome", "Peroxisome"], ans: 0, exp: "The nucleolus transcribes and assembles rRNA.", ref: "https://www.ncbi.nlm.nih.gov/books" },
+                { q: "What transport mechanism moves molecules against their gradient using ATP?", opts: ["Facilitated Diffusion", "Simple Diffusion", "Active Transport", "Osmosis"], ans: 2, exp: "Active transport requires ATP phosphorylation.", ref: "https://www.khanacademy.org/science/biology" },
+                { q: "What metric indicates statistical significance in research biology?", opts: ["P-value (p < 0.05)", "Mode", "Total Volume", "Mass Ratio"], ans: 0, exp: "A p-value < 0.05 indicates <5% chance of random occurrence.", ref: "https://www.ncbi.nlm.nih.gov/books" },
+                { q: "Which organelle synthesizes lipids and detoxifies chemicals?", opts: ["Rough ER", "Smooth ER", "Lysosome", "Vacuole"], ans: 1, exp: "The smooth ER synthesizes lipids and metabolizes toxins.", ref: "https://www.khanacademy.org/science/biology" },
+                { q: "Which nitrogenous base is present in RNA but absent in DNA?", opts: ["Thymine", "Uracil", "Guanine", "Cytosine"], ans: 1, exp: "Uracil substitutes for thymine in RNA.", ref: "https://www.khanacademy.org/science/biology" },
+                { q: "What is the function of lysosomes in animal cells?", opts: ["Hydrolytic digestion of cellular waste", "Protein translation", "Carbon fixation", "Spindle formation"], ans: 0, exp: "Lysosomes contain acid hydrolases to break down waste.", ref: "https://www.ncbi.nlm.nih.gov/books" },
+                { q: "Which structure segregates chromosomes during mitosis?", opts: ["Microtubules (Spindle apparatus)", "Microfilaments", "Intermediate Filaments", "Keratin"], ans: 0, exp: "Mitotic spindles pull sister chromatids apart.", ref: "https://www.khanacademy.org/science/biology" },
+                { q: "A solution with equal solute concentration to the cell is:", opts: ["Hypotonic", "Isotonic", "Hypertonic", "Saturated"], ans: 1, exp: "Isotonic solutions have balanced osmotic pressure.", ref: "https://www.khanacademy.org/science/biology" },
+                { q: "Catalase decomposes toxic hydrogen peroxide into:", opts: ["H2O and O2", "CO2 and Glucose", "ATP and NADPH", "Lactic Acid"], ans: 0, exp: "2 H2O2 -> 2 H2O + O2.", ref: "https://www.ncbi.nlm.nih.gov/books" }
+              ]
+            },
+            {
+              dayNum: 2,
+              title: "Cellular Respiration, Photosynthesis & Bioenergetics",
+              sol: "SOL BIO.2c / BIO.2d",
+              videoUrl: "https://www.youtube-nocookie.com/embed/00jbG_cfGuQ",
+              links: [
+                { name: "Khan Academy: Cellular Respiration", url: "https://www.khanacademy.org/science/biology" }
+              ],
+              notes: `
+                <h3>Day 2: Bioenergetics (ATP, Respiration, Photosynthesis)</h3>
+                <ul>
+                  <li><strong>Photosynthesis Equation:</strong> <span class="formula-badge">6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂</span></li>
+                  <li><strong>Cellular Respiration:</strong> Glycolysis (Cytoplasm) $\rightarrow$ Krebs Cycle (Mitochondrial Matrix) $\rightarrow$ Electron Transport Chain (Inner Membrane).</li>
+                  <li><strong>ATP Yield:</strong> Aerobic respiration produces ~36-38 ATP per glucose.</li>
+                </ul>
+              `,
+              quiz: [
+                { q: "Where does Glycolysis occur in eukaryotic cells?", opts: ["Cytoplasm", "Mitochondrial Matrix", "Thylakoid", "Nucleus"], ans: 0, exp: "Glycolysis takes place anaerobically in the cytosol/cytoplasm.", ref: "https://www.khanacademy.org" },
+                { q: "What is the final electron acceptor in the mitochondrial electron transport chain?", opts: ["Oxygen (O2)", "Carbon Dioxide", "Glucose", "Water"], ans: 0, exp: "Oxygen accepts electrons and protons to form water.", ref: "https://www.khanacademy.org" },
+                { q: "The light-dependent reactions of photosynthesis take place in the:", opts: ["Thylakoid membranes", "Stroma", "Cytoplasm", "Mitochondria"], ans: 0, exp: "Thylakoid membranes house chlorophyll pigments and photosystems.", ref: "https://www.khanacademy.org" },
+                { q: "The Calvin Cycle (Light-independent reactions) occurs in the:", opts: ["Stroma", "Thylakoid lumen", "Cristae", "Matrix"], ans: 0, exp: "The Calvin Cycle fixes CO2 into sugar inside the chloroplast stroma.", ref: "https://www.khanacademy.org" },
+                { q: "Which enzyme synthesizes ATP using a proton gradient?", opts: ["ATP Synthase", "Amylase", "DNA Polymerase", "Helicase"], ans: 0, exp: "ATP Synthase utilizes the chemiosmotic proton motor force.", ref: "https://www.khanacademy.org" },
+                { q: "How many net ATP molecules are produced during glycolysis alone?", opts: ["2 ATP", "4 ATP", "36 ATP", "38 ATP"], ans: 0, exp: "Glycolysis uses 2 ATP and produces 4 ATP, yielding a net of 2 ATP.", ref: "https://www.khanacademy.org" },
+                { q: "Lactic acid fermentation occurs in human muscle cells when there is a lack of:", opts: ["Oxygen", "Carbon Dioxide", "Glucose", "Enzymes"], ans: 0, exp: "Under anaerobic conditions, pyruvate is reduced to lactic acid to regenerate NAD+.", ref: "https://www.khanacademy.org" },
+                { q: "What gas is released as a byproduct during the light reactions of photosynthesis?", opts: ["Oxygen (O2)", "Carbon Dioxide", "Methane", "Nitrogen"], ans: 0, exp: "Photolysis of water releases O2 gas.", ref: "https://www.khanacademy.org" },
+                { q: "Which high-energy electron carrier is produced in the Krebs cycle?", opts: ["NADH and FADH2", "Chlorophyll", "Pyruvate", "Lactate"], ans: 0, exp: "NADH and FADH2 deliver electrons to the ETC.", ref: "https://www.khanacademy.org" },
+                { q: "What is the primary pigment responsible for absorbing blue and red light in plants?", opts: ["Chlorophyll a", "Carotenoid", "Anthocyanin", "Hemoglobin"], ans: 0, exp: "Chlorophyll a absorbs blue and red wavelengths, reflecting green.", ref: "https://www.khanacademy.org" },
+                { q: "During cellular respiration, where does the Krebs Cycle occur?", opts: ["Mitochondrial Matrix", "Cytoplasm", "Inner Membrane Space", "Ribosome"], ans: 0, exp: "The citric acid/Krebs cycle takes place in the fluid matrix of mitochondria.", ref: "https://www.khanacademy.org" },
+                { q: "What molecule enters the Krebs cycle after the intermediate step?", opts: ["Acetyl-CoA", "Glucose", "Lactic acid", "RuBP"], ans: 0, exp: "Pyruvate is converted into Acetyl-CoA before entering the Krebs cycle.", ref: "https://www.khanacademy.org" },
+                { q: "What is the main chemical energy currency of all living cells?", opts: ["ATP", "DNA", "Cellulose", "Starch"], ans: 0, exp: "Adenosine Triphosphate (ATP) stores energy in its phosphoanhydride bonds.", ref: "https://www.khanacademy.org" },
+                { q: "Organisms that make their own organic food using sunlight are called:", opts: ["Autotrophs", "Heterotrophs", "Decomposers", "Carnivores"], ans: 0, exp: "Photoautotrophs synthesize organic molecules via photosynthesis.", ref: "https://www.khanacademy.org" },
+                { q: "Which process produces the largest amount of ATP per glucose molecule?", opts: ["Oxidative Phosphorylation (ETC)", "Glycolysis", "Krebs Cycle", "Fermentation"], ans: 0, exp: "Oxidative phosphorylation produces ~32-34 ATP.", ref: "https://www.khanacademy.org" }
+              ]
+            }
+          ]
+        },
+        "wh_geo": {
+          name: "WH/Geo to 1500 A",
+          icon: "fa-landmark",
+          days: [
+            {
+              dayNum: 1,
+              title: "River Valleys, Ancient Greece & Roman Republic",
+              sol: "SOL WHI.3 / WHI.5 / WHI.6",
+              videoUrl: "https://www.youtube-nocookie.com/embed/kIID5FDi2JQ",
+              links: [
+                { name: "Met Museum: Ancient Near East", url: "https://www.metmuseum.org" },
+                { name: "Khan Academy: Ancient Civilizations", url: "https://www.khanacademy.org/humanities/world-history" }
+              ],
+              notes: `
+                <h3>Day 1: Early Civilizations & Classical Antiquity</h3>
+                <ul>
+                  <li><strong>Mesopotamia:</strong> Tigris & Euphrates, Cuneiform, Hammurabi's Code.</li>
+                  <li><strong>Athens vs Sparta:</strong> Direct democracy vs military oligarchy.</li>
+                  <li><strong>Rome:</strong> Twelve Tables, Pax Romana under Augustus.</li>
+                </ul>
+              `,
+              quiz: [
+                { q: "Which river valley civilization developed cuneiform writing and Hammurabi's Code?", opts: ["Nile", "Mesopotamia", "Indus", "Yellow River"], ans: 1, exp: "Mesopotamia between Tigris and Euphrates developed cuneiform and Hammurabi's Code.", ref: "https://www.khanacademy.org" },
+                { q: "What form of government was pioneered in Classical Athens under Pericles?", opts: ["Representative", "Direct Democracy", "Monarchy", "Dictatorship"], ans: 1, exp: "Athenian citizens voted directly on legislation.", ref: "https://www.khanacademy.org" },
+                { q: "The Twelve Tables were significant because they:", opts: ["Established Christianity", "Codified laws publicly", "Abolished the Senate", "Ended the Punic Wars"], ans: 1, exp: "Codified Roman law to protect plebeians.", ref: "https://www.khanacademy.org" },
+                { q: "Which trade route connected China to the Mediterranean for silk and porcelain?", opts: ["Trans-Saharan", "Silk Road", "Amber Road", "Northwest Passage"], ans: 1, exp: "The Silk Road spanned Eurasia.", ref: "https://www.khanacademy.org" },
+                { q: "Which civilization developed zero and the decimal system during the Gupta Empire?", opts: ["Persia", "India", "Greece", "Rome"], ans: 1, exp: "The Gupta Golden Age in India pioneered zero and base-10 math.", ref: "https://www.khanacademy.org" },
+                { q: "What was the 200-year period of Roman peace inaugurated by Augustus?", opts: ["Pax Romana", "Hellenistic Era", "Golden Bull", "Mandate of Heaven"], ans: 0, exp: "Pax Romana began with Augustus in 27 BCE.", ref: "https://www.khanacademy.org" },
+                { q: "Which religion emerged in Judea and spread along Roman roads?", opts: ["Zoroastrianism", "Christianity", "Buddhism", "Hinduism"], ans: 1, exp: "Christianity emerged in Judea and became the Roman state religion.", ref: "https://www.khanacademy.org" },
+                { q: "Which architecture is characteristic of Roman civic engineering?", opts: ["Corbeled arches", "Aqueducts with rounded arches & domes", "Step Pyramids", "Hypostyle"], ans: 1, exp: "Roman engineering mastered concrete arches and aqueducts.", ref: "https://www.khanacademy.org" },
+                { q: "The Peloponnesian War was fought between which two alliances?", opts: ["Athens (Delian) and Sparta (Peloponnesian)", "Rome and Carthage", "Persia and Thebes", "Macedon and Egypt"], ans: 0, exp: "Athens and Sparta fought from 431 to 404 BCE.", ref: "https://www.khanacademy.org" },
+                { q: "In ancient China, rulers justified their legitimacy through the:", opts: ["Divine Right", "Mandate of Heaven", "Justinian Code", "Caste System"], ans: 1, exp: "The Mandate of Heaven governed dynastic legitimacy.", ref: "https://www.khanacademy.org" },
+                { q: "Which emperor legalized Christianity with the Edict of Milan?", opts: ["Nero", "Constantine", "Diocletian", "Julius Caesar"], ans: 1, exp: "Constantine legalized Christianity in 313 CE.", ref: "https://www.khanacademy.org" },
+                { q: "The Parthenon in Athens was dedicated to which deity?", opts: ["Hera", "Athena", "Aphrodite", "Artemis"], ans: 1, exp: "Dedicated to the patron goddess Athena.", ref: "https://www.metmuseum.org" },
+                { q: "Which geographic barrier protected early Egyptian civilization?", opts: ["Rainforests", "Deserts (Sahara) and Nile Cataracts", "Glaciers", "Fjords"], ans: 1, exp: "Deserts and cataracts buffered Egypt from invasion.", ref: "https://www.khanacademy.org" },
+                { q: "What was the administrative language of the Western Roman Empire?", opts: ["Greek", "Latin", "Aramaic", "Sanskrit"], ans: 1, exp: "Latin was the civic and scholarly language of Rome.", ref: "https://www.khanacademy.org" },
+                { q: "Which sacred text forms the foundation of Judaism?", opts: ["The Vedas", "The Torah", "The Quran", "The Upanishads"], ans: 1, exp: "The Torah constitutes the core Hebrew scripture.", ref: "https://www.khanacademy.org" }
+              ]
+            }
+          ]
+        },
+        "eng9a": {
+          name: "English 9A",
+          icon: "fa-book",
+          days: [
+            {
+              dayNum: 1,
+              title: "Rhetorical Appeals, Syntax & Literary Analysis",
+              sol: "SOL 9.3 / 9.4 / 9.6",
+              videoUrl: "https://www.youtube-nocookie.com/embed/qYmDk3rF5V4",
+              links: [
+                { name: "Purdue OWL: Literary Analysis", url: "https://owl.purdue.edu" }
+              ],
+              notes: `
+                <h3>Day 1: English 9A - Rhetoric & Literary Grammar</h3>
+                <ul>
+                  <li><strong>Appeals:</strong> Ethos (credibility), Pathos (emotion), Logos (reason).</li>
+                  <li><strong>Active Voice:</strong> Subject acts directly.</li>
+                  <li><strong>MLA Citation:</strong> <span class="formula-badge">(Author Page#)</span></li>
+                </ul>
+              `,
+              quiz: [
+                { q: "Which rhetorical appeal relies on data, statistics, and logic?", opts: ["Pathos", "Ethos", "Logos", "Kairos"], ans: 2, exp: "Logos appeals to rationality and evidence.", ref: "https://owl.purdue.edu" },
+                { q: "Identify the figure of speech: 'The wind whispered secrets.'", opts: ["Simile", "Personification", "Hyperbole", "Oxymoron"], ans: 1, exp: "Giving human traits to non-human elements is personification.", ref: "https://owl.purdue.edu" },
+                { q: "Which sentence demonstrates parallel structure?", opts: ["She likes running, to swim, and biking.", "She likes running, swimming, and biking.", "She likes to run, swimming, and bike.", "She likes running, swim, and bikes."], ans: 1, exp: "All items share the gerund (-ing) structure.", ref: "https://owl.purdue.edu" },
+                { q: "What is dramatic irony?", opts: ["Audience knows what characters do not", "Opposite of expected occurs", "Sarcasm", "Author addresses reader"], ans: 0, exp: "Audience has knowledge hidden from characters.", ref: "https://owl.purdue.edu" },
+                { q: "Which sentence is in the ACTIVE voice?", opts: ["The essay was written by John.", "John wrote the essay.", "The essay had been submitted.", "A grade was given by the teacher."], ans: 1, exp: "Subject 'John' performs the action 'wrote'.", ref: "https://owl.purdue.edu" },
+                { q: "Identify the comma splice:", opts: ["I studied, and I passed.", "I studied; I passed.", "I studied, I passed.", "Because I studied, I passed."], ans: 2, exp: "Two independent clauses joined only with a comma.", ref: "https://owl.purdue.edu" },
+                { q: "What term describes the emotional atmosphere of a work?", opts: ["Tone", "Mood", "Syntax", "Diction"], ans: 1, exp: "Mood is the feeling created for the reader.", ref: "https://owl.purdue.edu" },
+                { q: "In MLA format, what is the proper in-text citation for Green, page 42?", opts: ["(Green, p. 42)", "(Green 42)", "(Green: 42)", "(John Green 42)"], ans: 1, exp: "MLA uses (Author Page#): (Green 42).", ref: "https://owl.purdue.edu" },
+                { q: "Identify the metaphor:", opts: ["Her heart was a fortress.", "Her heart was like a stone.", "She ran very fast.", "The silence was loud."], ans: 0, exp: "Direct equivalence without like or as.", ref: "https://owl.purdue.edu" },
+                { q: "What is an author's specific word choice called?", opts: ["Syntax", "Diction", "Meter", "Stanza"], ans: 1, exp: "Diction refers to deliberate vocabulary choice.", ref: "https://owl.purdue.edu" },
+                { q: "A universal narrative symbol or character model is an:", opts: ["Archetype", "Allusion", "Anaphora", "Alliteration"], ans: 0, exp: "Archetypes are universal motifs (e.g., The Hero).", ref: "https://owl.purdue.edu" },
+                { q: "Identify the dangling modifier:", opts: ["Having finished the test, the bell rang.", "After John finished the test, he left.", "She read the book.", "They studied hard."], ans: 0, exp: "The opening phrase modifies 'the bell' instead of the student.", ref: "https://owl.purdue.edu" },
+                { q: "What is the central arguable claim of an analytical essay?", opts: ["Plot summary", "Thesis Statement", "Hook", "Conclusion"], ans: 1, exp: "A thesis asserts the primary analytical argument.", ref: "https://owl.purdue.edu" },
+                { q: "Identify the oxymoron:", opts: ["Deafening silence", "Bright light", "Running quickly", "Cold winter"], ans: 0, exp: "Juxtaposition of contradictory words.", ref: "https://owl.purdue.edu" },
+                { q: "What does the root 'bene' mean?", opts: ["Harmful", "Good / Well", "Ancient", "Life"], ans: 1, exp: "'Bene' means good or well in Latin.", ref: "https://owl.purdue.edu" }
+              ]
+            }
+          ]
+        },
+        "span2": {
+          name: "Spanish II",
+          icon: "fa-language",
+          days: [
+            {
+              dayNum: 1,
+              title: "Preterite vs Imperfect & Irregular Past Conjugations",
+              sol: "VA FL Standards: S-II",
+              videoUrl: "https://www.youtube-nocookie.com/embed/8eW7K3wX9q8",
+              links: [
+                { name: "StudySpanish: Preterite vs Imperfect", url: "https://studyspanish.com" }
+              ],
+              notes: `
+                <h3>Day 1: Spanish II - Preterite vs Imperfect</h3>
+                <ul>
+                  <li><strong>Preterite:</strong> Completed past actions with specific endpoints (ayer, anoche).</li>
+                  <li><strong>Imperfect:</strong> Habitual actions, descriptions, age, time, weather.</li>
+                  <li><strong>Irregular Preterite:</strong> Fui (Ser/Ir), Hice (Hacer), Tuve (Tener), Estuve (Estar).</li>
+                </ul>
+              `,
+              quiz: [
+                { q: "Choose the correct preterite form: Ayer yo _____ (hablar) con mi maestro.", opts: ["hablé", "hablaba", "hablo", "hablaré"], ans: 0, exp: "'Ayer' requires the preterite: hablé.", ref: "https://studyspanish.com" },
+                { q: "Which past tense is used for habitual actions: 'Cuando era niño, siempre _____ (jugar)'?", opts: ["jugué", "jugaba", "juego", "jugaste"], ans: 1, exp: "Childhood habits take the imperfect: jugaba.", ref: "https://studyspanish.com" },
+                { q: "What is the irregular preterite form of 'hacer' for él/ella/usted?", opts: ["hizo", "hace", "hiciste", "hacía"], ans: 0, exp: "Hacer becomes 'hizo' in 3rd person singular.", ref: "https://studyspanish.com" },
+                { q: "Which verbs share the exact same conjugations in the preterite tense?", opts: ["Hacer & Tener", "Ser & Ir", "Estar & Poder", "Decir & Traer"], ans: 1, exp: "Both Ser and Ir share: fui, fuiste, fue, fuimos, fueron.", ref: "https://studyspanish.com" },
+                { q: "Choose the indirect object pronoun: Juan _____ da el libro a María.", opts: ["le", "la", "lo", "se"], ans: 0, exp: "'A María' takes the indirect pronoun 'le'.", ref: "https://studyspanish.com" },
+                { q: "Translate: 'It was 3:00 PM when we arrived.'", opts: ["Fueron las tres cuando llegamos.", "Eran las tres cuando llegamos.", "Eran las tres cuando llegábamos.", "Fue las tres."], ans: 1, exp: "Time in past takes imperfect (Eran las tres); arrival takes preterite (llegamos).", ref: "https://studyspanish.com" },
+                { q: "What is the preterite 'yo' form of 'buscar'?", opts: ["busqué", "busque", "buscé", "buscaba"], ans: 0, exp: "-CAR verbs change c -> qu in preterite yo: busqué.", ref: "https://studyspanish.com" },
+                { q: "What is the preterite 'yo' form of 'almorzar'?", opts: ["almorcé", "almorzé", "almorzaba", "almorzo"], ans: 0, exp: "-ZAR verbs change z -> c in preterite yo: almorcé.", ref: "https://studyspanish.com" },
+                { q: "Which expression triggers the preterite tense?", opts: ["Todos los días", "Frecuentemente", "Anoche", "Generalmente"], ans: 2, exp: "'Anoche' (last night) triggers the preterite.", ref: "https://studyspanish.com" },
+                { q: "Conjugate 'estar' in the preterite for 'nosotros':", opts: ["estuvimos", "estábamos", "estuvisteis", "estamos"], ans: 0, exp: "Irregular stem 'estuv-': estuvimos.", ref: "https://studyspanish.com" },
+                { q: "Which word is a Spanish reflexive pronoun?", opts: ["se", "le", "lo", "su"], ans: 0, exp: "'Se' is the reflexive pronoun for 3rd person.", ref: "https://studyspanish.com" },
+                { q: "What does 'conocer' mean in the preterite tense?", opts: ["To know info", "To have met someone for the first time", "To recognize", "To forget"], ans: 1, exp: "In preterite, 'conocer' means to meet for the first time.", ref: "https://studyspanish.com" },
+                { q: "Conjugate 'leer' in the preterite for 'ellos':", opts: ["leyeron", "leieron", "leían", "leen"], ans: 0, exp: "Vowel stem verbs change i -> y in 3rd person plural: leyeron.", ref: "https://studyspanish.com" },
+                { q: "Which sentence correctly replaces 'le lo'?", opts: ["Yo le lo doy.", "Yo se lo doy.", "Yo lo le doy.", "Yo me lo se."], ans: 1, exp: "'Le' changes to 'se' before 'lo': Yo se lo doy.", ref: "https://studyspanish.com" },
+                { q: "How do you say 'We were studying while he was cooking'?", opts: ["Estudiamos mientras cocinó.", "Estudiábamos mientras cocinaba.", "Estudiamos mientras cocinaba.", "Estudiábamos cocinó."], ans: 1, exp: "Two simultaneous ongoing past actions linked by 'mientras' use imperfect.", ref: "https://studyspanish.com" }
+              ]
+            }
+          ]
+        }
+      },
+
+      /* Grade 10-12 Shells */
+      "10": {
+        "geom": {
+          name: "Geometry",
+          icon: "fa-shapes",
+          days: [
+            {
+              dayNum: 1,
+              title: "Triangle Congruence Theorems (SSS, SAS, ASA, AAS, HL)",
+              sol: "SOL G.6",
+              videoUrl: "https://www.youtube-nocookie.com/embed/8Lvyxx_yE4g",
+              links: [{ name: "Khan Academy: Congruence", url: "https://www.khanacademy.org" }],
+              notes: `<h3>Day 1: Triangle Congruence</h3><p>Valid criteria: SSS, SAS, ASA, AAS, and HL. Invalid: SSA and AAA.</p>`,
+              quiz: [
+                { q: "Which theorem is NOT valid for proving triangle congruence?", opts: ["SAS", "AAS", "SSA", "SSS"], ans: 2, exp: "SSA does not guarantee triangle uniqueness.", ref: "https://www.khanacademy.org" },
+                { q: "If two angles and the included side are congruent, which theorem applies?", opts: ["AAS", "ASA", "SAS", "SSS"], ans: 1, exp: "The included side between two angles is ASA.", ref: "https://www.khanacademy.org" },
+                { q: "Hypotenuse-Leg (HL) theorem applies only to which triangles?", opts: ["Equilateral", "Right triangles", "Obtuse triangles", "Isosceles only"], ans: 1, exp: "HL requires a right angle.", ref: "https://www.khanacademy.org" },
+                { q: "What does CPCTC stand for?", opts: ["Corresponding Parts of Congruent Triangles are Congruent", "Central Points of Congruent Triangles Connect", "Circle Perimeter Calculated", "None"], ans: 0, exp: "CPCTC is used following proof of congruence.", ref: "https://www.khanacademy.org" },
+                { q: "The sum of interior angles of a triangle is always:", opts: ["90°", "180°", "360°", "270°"], ans: 1, exp: "Triangle angle sum = 180°.", ref: "https://www.khanacademy.org" },
+                { q: "If a triangle has sides 6, 8, 10, what type of triangle is it?", opts: ["Acute", "Right (6²+8²=10²)", "Obtuse", "Equilateral"], ans: 1, exp: "36 + 64 = 100, which satisfies the Pythagorean theorem.", ref: "https://www.khanacademy.org" },
+                { q: "In an isosceles triangle, the angles opposite congruent sides are:", opts: ["Complementary", "Congruent", "Supplementary", "Right angles"], ans: 1, exp: "Isosceles Triangle Theorem guarantees congruent base angles.", ref: "https://www.khanacademy.org" },
+                { q: "What is the measure of each angle in an equiangular triangle?", opts: ["45°", "60°", "90°", "120°"], ans: 1, exp: "180° / 3 = 60°.", ref: "https://www.khanacademy.org" },
+                { q: "Which transformation preserves both size and shape (isometry)?", opts: ["Dilation", "Translation", "Stretch", "Perspective"], ans: 1, exp: "Rigid transformations preserve congruence.", ref: "https://www.khanacademy.org" },
+                { q: "Find the hypotenuse of a right triangle with legs 5 and 12:", opts: ["13", "17", "15", "14"], ans: 0, exp: "5² + 12² = 25 + 144 = 169 -> √169 = 13.", ref: "https://www.khanacademy.org" },
+                { q: "What is the exterior angle of a triangle equal to?", opts: ["Sum of adjacent angles", "Sum of the two remote interior angles", "180° minus hypotenuse", "Always 90°"], ans: 1, exp: "Exterior Angle Theorem equals the sum of remote interior angles.", ref: "https://www.khanacademy.org" },
+                { q: "Can a triangle have side lengths 3, 4, and 8?", opts: ["Yes", "No (3 + 4 < 8)", "Only if right", "Only if isosceles"], ans: 1, exp: "Triangle Inequality requires the sum of any two sides to exceed the third.", ref: "https://www.khanacademy.org" },
+                { q: "In a 30-60-90 triangle, if the shorter leg is x, the hypotenuse is:", opts: ["x√3", "2x", "x√2", "3x"], ans: 1, exp: "In 30-60-90 triangles, hypotenuse = 2 * short leg.", ref: "https://www.khanacademy.org" },
+                { q: "In a 45-45-90 triangle with legs 4, the hypotenuse is:", opts: ["4√2", "8", "4√3", "6"], ans: 0, exp: "Hypotenuse = leg * √2 = 4√2.", ref: "https://www.khanacademy.org" },
+                { q: "The perpendicular bisectors of a triangle intersect at the:", opts: ["Incenter", "Circumcenter", "Centroid", "Orthocenter"], ans: 1, exp: "Circumcenter is the intersection of perpendicular bisectors.", ref: "https://www.khanacademy.org" }
+              ]
+            }
+          ]
+        }
+      },
+      "11": {
+        "alg2": {
+          name: "Algebra II",
+          icon: "fa-square-root-variable",
+          days: [
+            {
+              dayNum: 1,
+              title: "Complex Numbers & Quadratic Roots",
+              sol: "SOL AII.2",
+              videoUrl: "https://www.youtube-nocookie.com/embed/kpywW0gWw1Y",
+              links: [{ name: "Khan Academy: Complex Numbers", url: "https://www.khanacademy.org" }],
+              notes: `<h3>Day 1: Complex Numbers</h3><p>Definition: <span class="formula-badge">i = √(-1)</span>, <span class="formula-badge">i² = -1</span>.</p>`,
+              quiz: [
+                { q: "Simplify: i² + 5", opts: ["4", "6", "5 - i", "-4"], ans: 0, exp: "i² = -1, so -1 + 5 = 4.", ref: "https://www.khanacademy.org" },
+                { q: "Evaluate i⁴:", opts: ["1", "-1", "i", "-i"], ans: 0, exp: "i⁴ = (i²)² = (-1)² = 1.", ref: "https://www.khanacademy.org" },
+                { q: "Simplify: (3 + 2i) + (4 - 5i)", opts: ["7 - 3i", "7 + 3i", "12 - 10i", "7 - 7i"], ans: 0, exp: "(3+4) + (2-5)i = 7 - 3i.", ref: "https://www.khanacademy.org" },
+                { q: "What is the conjugate of 5 - 2i?", opts: ["5 + 2i", "-5 - 2i", "-5 + 2i", "2 - 5i"], ans: 0, exp: "Change the sign of the imaginary part: 5 + 2i.", ref: "https://www.khanacademy.org" },
+                { q: "Multiply: (2i)(3i)", opts: ["-6", "6", "6i", "-6i"], ans: 0, exp: "6i² = 6(-1) = -6.", ref: "https://www.khanacademy.org" },
+                { q: "Solve x² + 16 = 0:", opts: ["x = ±4i", "x = ±4", "x = 16", "x = -16"], ans: 0, exp: "x² = -16 -> x = ±√(-16) = ±4i.", ref: "https://www.khanacademy.org" },
+                { q: "Evaluate the discriminant b² - 4ac for 2x² + 4x + 5 = 0:", opts: ["-24 (Two complex roots)", "24", "0", "16"], ans: 0, exp: "4² - 4(2)(5) = 16 - 40 = -24.", ref: "https://www.khanacademy.org" },
+                { q: "Evaluate i³:", opts: ["-i", "i", "1", "-1"], ans: 0, exp: "i³ = i² * i = -1 * i = -i.", ref: "https://www.khanacademy.org" },
+                { q: "Simplify: √( -49 )", opts: ["7i", "7", "-7", "-7i"], ans: 0, exp: "√49 * √(-1) = 7i.", ref: "https://www.khanacademy.org" },
+                { q: "What is the vertex of y = (x - 3)² + 4?", opts: ["(3, 4)", "(-3, 4)", "(3, -4)", "(-3, -4)"], ans: 0, exp: "In vertex form y = a(x - h)² + k, (h, k) is (3, 4).", ref: "https://www.khanacademy.org" },
+                { q: "Simplify: (1 + i)(1 - i)", opts: ["2", "0", "1 - i²", "-2"], ans: 0, exp: "1 - i² = 1 - (-1) = 2.", ref: "https://www.khanacademy.org" },
+                { q: "What is the standard form of a complex number?", opts: ["a + bi", "ax² + bx + c", "mx + b", "a/b"], ans: 0, exp: "Standard complex form is a + bi.", ref: "https://www.khanacademy.org" },
+                { q: "Divide: 4 / (2i)", opts: ["-2i", "2i", "2", "-2"], ans: 0, exp: "Multiply by i: 4i / (2i²) = 4i / -2 = -2i.", ref: "https://www.khanacademy.org" },
+                { q: "If discriminant = 0, how many real roots exist?", opts: ["Exactly 1 real rational root", "2 distinct real roots", "2 complex roots", "0 roots"], ans: 0, exp: "Discriminant = 0 indicates a single repeated real rational root.", ref: "https://www.khanacademy.org" },
+                { q: "Factor completely: x² + 9", opts: ["(x + 3i)(x - 3i)", "(x + 3)(x - 3)", "(x + 3)²", "Prime"], ans: 0, exp: "Sum of squares factors into conjugate complex binomials.", ref: "https://www.khanacademy.org" }
+              ]
+            }
+          ]
+        }
+      },
+      "12": {
+        "gov": {
+          name: "VA & US Government",
+          icon: "fa-scale-balanced",
+          days: [
+            {
+              dayNum: 1,
+              title: "Constitutional Principles & Federalism",
+              sol: "SOL GOVT.3",
+              videoUrl: "https://www.youtube-nocookie.com/embed/lrk4oY7UUpQ",
+              links: [{ name: "National Constitution Center", url: "https://constitutioncenter.org" }],
+              notes: `<h3>Day 1: Constitutional Structure</h3><p>Separation of powers across Legislative (Art I), Executive (Art II), and Judicial (Art III).</p>`,
+              quiz: [
+                { q: "Which clause in Article VI establishes federal supremacy?", opts: ["Supremacy Clause", "Elastic Clause", "Commerce Clause", "Due Process"], ans: 0, exp: "Article VI designates the Constitution and federal treaties as supreme.", ref: "https://constitutioncenter.org" },
+                { q: "Which branch has the power to declare war?", opts: ["Legislative (Congress)", "Executive (President)", "Judicial", "Governors"], ans: 0, exp: "Article I, Section 8 grants Congress power to declare war.", ref: "https://constitutioncenter.org" },
+                { q: "How many amendments comprise the Bill of Rights?", opts: ["10", "12", "27", "14"], ans: 0, exp: "The first 10 amendments ratified in 1791 constitute the Bill of Rights.", ref: "https://constitutioncenter.org" },
+                { q: "Which Supreme Court case established judicial review?", opts: ["Marbury v. Madison (1803)", "McCulloch v. Maryland", "Brown v. Board", "Gibbons v. Ogden"], ans: 0, exp: "Chief Justice Marshall established judicial review in Marbury v. Madison.", ref: "https://constitutioncenter.org" },
+                { q: "The term of a United States Senator is:", opts: ["6 years", "2 years", "4 years", "Life"], ans: 0, exp: "Senators serve 6-year staggered terms.", ref: "https://constitutioncenter.org" },
+                { q: "The 10th Amendment reserves powers not delegated to the federal government to:", opts: ["The States or the people", "The Supreme Court", "The Military", "Congress"], ans: 0, exp: "The 10th Amendment defines reserved powers.", ref: "https://constitutioncenter.org" },
+                { q: "The Virginia state legislative body is called the:", opts: ["General Assembly", "State Congress", "Parliament", "House of Governors"], ans: 0, exp: "Virginia's legislature is the General Assembly.", ref: "https://constitutioncenter.org" },
+                { q: "Which constitutional amendment abolished slavery?", opts: ["13th Amendment", "14th Amendment", "15th Amendment", "19th Amendment"], ans: 0, exp: "The 13th Amendment (1865) abolished slavery.", ref: "https://constitutioncenter.org" },
+                { q: "Who presides over the US Senate as its President?", opts: ["Vice President", "Speaker of House", "Chief Justice", "Majority Leader"], ans: 0, exp: "The Vice President serves as Senate President.", ref: "https://constitutioncenter.org" },
+                { q: "How many total electoral votes exist in the US Electoral College?", opts: ["538", "435", "100", "270"], ans: 0, exp: "538 total; 270 needed to win.", ref: "https://constitutioncenter.org" },
+                { q: "The First Amendment protects which five freedoms?", opts: ["Speech, Religion, Press, Assembly, Petition", "Speech, Guns, Trial, Press, Voting", "Search, Seizure, Due Process, Counsel, Bail", "Taxes, Commerce, Speech, Press, Arms"], ans: 0, exp: "Speech, Religion, Press, Assembly, Petition.", ref: "https://constitutioncenter.org" },
+                { q: "The 'Necessary and Proper Clause' is also known as the:", opts: ["Elastic Clause", "Commerce Clause", "Establishment Clause", "Full Faith"], ans: 0, exp: "Article I, Section 8, Clause 18 is the Elastic Clause.", ref: "https://constitutioncenter.org" },
+                { q: "Federal judges and Supreme Court Justices serve terms of:", opts: ["Life during good behavior", "10 years", "14 years", "6 years"], ans: 0, exp: "Article III judges hold life tenure during good behavior.", ref: "https://constitutioncenter.org" },
+                { q: "The 19th Amendment guaranteed voting rights to:", opts: ["Women", "18-year-olds", "Non-landowners", "Immigrants"], ans: 0, exp: "The 19th Amendment prohibited voting denial based on sex.", ref: "https://constitutioncenter.org" },
+                { q: "What government structure divides power between national and state governments?", opts: ["Federalism", "Unitary System", "Confederation", "Monarchy"], ans: 0, exp: "Federalism divides sovereignty between national and state tiers.", ref: "https://constitutioncenter.org" }
+              ]
+            }
+          ]
+        }
+      }
+    };
+
+    /* 3. APP STATE & DAILY CALCULATOR */
+    let currentGrade = "9";
+    let currentSubjectKey = "alg1";
+    let currentSelectedDay = 1;
+    let userAnswers = {};
+
+    let timerDuration = 30 * 60;
+    let timerRemaining = timerDuration;
+    let timerInterval = null;
+    let isRunning = false;
+
+    // Calculate dynamic "Today" day-number based on day of the year
+    function calculateTodayDayNumber() {
+      const now = new Date();
+      const start = new Date(now.getFullYear(), 0, 0);
+      const diff = now - start;
+      const oneDay = 1000 * 60 * 60 * 24;
+      const dayOfYear = Math.floor(diff / oneDay);
+      return (dayOfYear % 30) + 1; // 30-day curriculum cycle
+    }
+
+    const todayDayNumber = calculateTodayDayNumber();
+
+    function init() {
+      currentSelectedDay = todayDayNumber;
+      populateDaySelector();
+      renderGrade();
+      updateParentDashboardStats();
+    }
+
+    function populateDaySelector() {
+      const picker = document.getElementById("dayPicker");
+      picker.innerHTML = "";
+
+      // Add "Today"
+      const optToday = document.createElement("option");
+      optToday.value = todayDayNumber;
+      optToday.innerText = `⭐ Today's Lesson (Day ${todayDayNumber})`;
+      picker.appendChild(optToday);
+
+      // Add Past Days archive
+      for (let d = todayDayNumber - 1; d >= 1; d--) {
+        const opt = document.createElement("option");
+        opt.value = d;
+        opt.innerText = `📅 Day ${d} (Past Archive)`;
+        picker.appendChild(opt);
+      }
+
+      // If today is day 1, populate earlier cycle days so student can test history
+      if (todayDayNumber === 1) {
+        const opt2 = document.createElement("option");
+        opt2.value = 2;
+        opt2.innerText = `📅 Day 2 (Upcoming / Alternate)`;
+        picker.appendChild(opt2);
+      }
+
+      picker.value = currentSelectedDay;
+    }
+
+    function handleDayChange() {
+      currentSelectedDay = parseInt(document.getElementById("dayPicker").value);
+      loadLessonContent();
+    }
+
+    function switchGrade() {
+      currentGrade = document.getElementById("gradeSelect").value;
+      const keys = Object.keys(dailyCurriculum[currentGrade]);
+      currentSubjectKey = keys[0];
+      renderGrade();
+    }
+
+    function renderGrade() {
+      renderSubjects();
+      loadLessonContent();
+    }
+
+    function renderSubjects() {
+      const subjectsObj = dailyCurriculum[currentGrade];
+      const subContainer = document.getElementById("subjectList");
+      subContainer.innerHTML = "";
+
+      Object.keys(subjectsObj).forEach(key => {
+        const sub = subjectsObj[key];
+        const btn = document.createElement("button");
+        btn.className = `subject-btn ${key === currentSubjectKey ? 'active' : ''}`;
+        btn.innerHTML = `<span><i class="fa-solid ${sub.icon}"></i> &nbsp;${sub.name}</span> <i class="fa-solid fa-chevron-right" style="font-size:0.75rem;"></i>`;
+        btn.onclick = () => {
+          currentSubjectKey = key;
+          renderSubjects();
+          loadLessonContent();
+        };
+        subContainer.appendChild(btn);
+      });
+    }
+
+    function loadLessonContent() {
+      const sub = dailyCurriculum[currentGrade][currentSubjectKey];
+      const availableDays = sub.days;
+      
+      // Select exact day or wrap around available lessons
+      let topic = availableDays.find(d => d.dayNum === currentSelectedDay);
+      if (!topic) {
+        const wrapIdx = (currentSelectedDay - 1) % availableDays.length;
+        topic = availableDays[wrapIdx];
+      }
+
+      document.getElementById("solCode").innerText = topic.sol;
+      document.getElementById("dayBadge").innerText = `Day ${currentSelectedDay}${currentSelectedDay === todayDayNumber ? ' (Today)' : ' (Archived)'}`;
+      document.getElementById("lessonTitle").innerText = topic.title;
+      document.getElementById("videoFrame").src = topic.videoUrl;
+
+      const linkList = document.getElementById("curatedLinks");
+      linkList.innerHTML = "";
+      topic.links.forEach(l => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="${l.url}" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${l.name}</a>`;
+        linkList.appendChild(li);
+      });
+
+      document.getElementById("studyNotesContent").innerHTML = topic.notes;
+      renderQuiz(topic.quiz);
+    }
+
+    function renderQuiz(quizList) {
+      const container = document.getElementById("quizContainer");
+      container.innerHTML = "";
+      userAnswers = {};
+      document.getElementById("scoreBanner").style.display = "none";
+      document.getElementById("submitQuizBtn").style.display = "flex";
+
+      quizList.forEach((q, qIndex) => {
+        const card = document.createElement("div");
+        card.className = "quiz-card";
+        card.innerHTML = `
+          <div class="quiz-q-title">Q${qIndex + 1}: ${q.q}</div>
+          <div class="quiz-options" id="opt-group-${qIndex}">
+            ${q.opts.map((opt, optIndex) => `
+              <div class="quiz-opt" onclick="selectOption(${qIndex}, ${optIndex}, this)">
+                <i class="fa-regular fa-circle"></i> ${opt}
+              </div>
+            `).join('')}
+          </div>
+          <div class="quiz-explanation" id="exp-${qIndex}">
+            <div id="exp-text-${qIndex}"></div>
+            <a href="${q.ref}" target="_blank" class="exp-link">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Remediation Material & Study Guide
+            </a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function selectOption(qIndex, optIndex, element) {
+      userAnswers[qIndex] = optIndex;
+      const group = document.getElementById(`opt-group-${qIndex}`);
+      const allOpts = group.querySelectorAll('.quiz-opt');
+      allOpts.forEach(el => {
+        el.classList.remove('selected');
+        el.querySelector('i').className = 'fa-regular fa-circle';
+      });
+      element.classList.add('selected');
+      element.querySelector('i').className = 'fa-solid fa-circle-dot';
+    }
+
+    /* 4. QUIZ SUBMISSION WITH REMEDIATION & HISTORICAL LOGGING */
+    function submitQuiz() {
+      const sub = dailyCurriculum[currentGrade][currentSubjectKey];
+      const availableDays = sub.days;
+      let topic = availableDays.find(d => d.dayNum === currentSelectedDay) || availableDays[(currentSelectedDay - 1) % availableDays.length];
+      const quiz = topic.quiz;
+      let score = 0;
+
+      quiz.forEach((q, idx) => {
+        const group = document.getElementById(`opt-group-${idx}`);
+        const opts = group.querySelectorAll('.quiz-opt');
+        const expBox = document.getElementById(`exp-${idx}`);
+        const expText = document.getElementById(`exp-text-${idx}`);
+        expBox.style.display = "block";
+
+        const selected = userAnswers[idx];
+
+        opts.forEach((optEl, oIdx) => {
+          if (oIdx === q.ans) {
+            optEl.classList.add('correct');
+            optEl.querySelector('i').className = 'fa-solid fa-circle-check';
+          } else if (oIdx === selected) {
+            optEl.classList.add('incorrect');
+            optEl.querySelector('i').className = 'fa-solid fa-circle-xmark';
+          }
+        });
+
+        if (selected === q.ans) {
+          score++;
+          expBox.className = "quiz-explanation correct-feedback";
+          expText.innerHTML = `<strong><i class="fa-solid fa-circle-check" style="color:var(--success)"></i> Correct!</strong> ${q.exp}`;
+        } else {
+          expBox.className = "quiz-explanation wrong-feedback";
+          expText.innerHTML = `<strong><i class="fa-solid fa-circle-xmark" style="color:var(--danger)"></i> Incorrect.</strong> Correct Answer: <em>${q.opts[q.ans]}</em>.<br><strong>Explanation:</strong> ${q.exp}`;
+        }
+      });
+
+      const percentage = Math.round((score / quiz.length) * 100);
+      const banner = document.getElementById("scoreBanner");
+      banner.style.display = "block";
+      banner.innerHTML = `
+        <h3 style="font-size:1.2rem; margin-bottom:6px;">
+          ${percentage >= 80 ? '🎉 SOL Mastery Achieved!' : '📚 Remediation Recommended'}
+        </h3>
+        <p>Score: <strong>${score} / ${quiz.length} (${percentage}%)</strong> — <em>Logged to Parent Portal</em></p>
+      `;
+
+      document.getElementById("submitQuizBtn").style.display = "none";
+
+      saveQuizRecord({
+        dateTime: new Date().toLocaleString('en-US', { dateStyle: 'short', timeStyle: 'short' }),
+        dayLabel: `Day ${currentSelectedDay}${currentSelectedDay === todayDayNumber ? ' (Today)' : ' (Archive)'}`,
+        grade: `Grade ${currentGrade}`,
+        subject: sub.name,
+        topic: topic.title,
+        sol: topic.sol,
+        scoreText: `${score}/${quiz.length}`,
+        percentage: percentage,
+        passed: percentage >= 80
+      });
+    }
+
+    function saveQuizRecord(record) {
+      let history = JSON.parse(localStorage.getItem("sol_quiz_history") || "[]");
+      history.unshift(record);
+      localStorage.setItem("sol_quiz_history", JSON.stringify(history));
+      updateParentDashboardStats();
+    }
+
+    /* 5. PARENT PORTAL CONTROLS */
+    function openParentModal() {
+      updateParentDashboardStats();
+      document.getElementById("parentModal").classList.add("active");
+    }
+
+    function closeParentModal() {
+      document.getElementById("parentModal").classList.remove("active");
+    }
+
+    function updateParentDashboardStats() {
+      const history = JSON.parse(localStorage.getItem("sol_quiz_history") || "[]");
+      const tbody = document.getElementById("historyTableBody");
+      tbody.innerHTML = "";
+
+      if (history.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color: var(--text-muted); padding: 20px;">No quiz records logged yet. Complete a quiz to view scores here.</td></tr>`;
+        document.getElementById("totalQuizzesTaken").innerText = "0";
+        document.getElementById("averageScore").innerText = "0%";
+        document.getElementById("masteryRate").innerText = "0%";
+        return;
+      }
+
+      let totalPct = 0;
+      let masteryCount = 0;
+
+      history.forEach(item => {
+        totalPct += item.percentage;
+        if (item.passed) masteryCount++;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.dateTime}</td>
+          <td><span class="formula-badge">${item.dayLabel || 'Day 1'}</span></td>
+          <td>${item.grade}</td>
+          <td><strong>${item.subject}</strong></td>
+          <td>${item.topic} <br><span style="font-size:0.75rem; color:var(--text-muted);">${item.sol}</span></td>
+          <td>${item.scoreText} (${item.percentage}%)</td>
+          <td>
+            <span class="${item.passed ? 'badge-pass' : 'badge-fail'}">
+              ${item.passed ? 'Mastered' : 'Needs Review'}
+            </span>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      document.getElementById("totalQuizzesTaken").innerText = history.length;
+      document.getElementById("averageScore").innerText = `${Math.round(totalPct / history.length)}%`;
+      document.getElementById("masteryRate").innerText = `${Math.round((masteryCount / history.length) * 100)}%`;
+    }
+
+    function clearHistory() {
+      if (confirm("Are you sure you want to clear all quiz progress records?")) {
+        localStorage.removeItem("sol_quiz_history");
+        updateParentDashboardStats();
+      }
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.module-tab').forEach(el => el.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    /* 6. 30-MINUTE TIMER */
+    function toggleTimer() {
+      const btn = document.getElementById("timerBtn");
+      if (isRunning) {
+        clearInterval(timerInterval);
+        isRunning = false;
+        btn.innerHTML = '<i class="fa-solid fa-play"></i> Resume 30m Session';
+      } else {
+        isRunning = true;
+        btn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause Timer';
+        timerInterval = setInterval(() => {
+          if (timerRemaining > 0) {
+            timerRemaining--;
+            updateTimerDisplay();
+          } else {
+            clearInterval(timerInterval);
+            isRunning = false;
+            alert("⏰ 30-Minute Tuition Session Complete! Great job today.");
+            resetTimer();
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isRunning = false;
+      timerRemaining = timerDuration;
+      updateTimerDisplay();
+      document.getElementById("timerBtn").innerHTML = '<i class="fa-solid fa-play"></i> Start 30m Session';
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timerRemaining / 60);
+      const secs = timerRemaining % 60;
+      document.getElementById("timerDisplay").innerText = 
+        `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
