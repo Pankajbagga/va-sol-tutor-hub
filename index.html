@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Virginia SOL & Honors Daily Tutor (Grades 9–12)</title>
+  <title>Virginia SOL & Honors Hub (Grades 9–12)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -41,7 +41,6 @@
       padding-bottom: 60px;
     }
 
-    /* Header */
     header {
       background: var(--bg-card);
       border-bottom: 1px solid var(--border);
@@ -137,7 +136,6 @@
       background: #4338ca;
     }
 
-    /* Hero Banner */
     .hero {
       max-width: 1240px;
       margin: 20px auto 0;
@@ -190,7 +188,6 @@
       font-family: monospace;
     }
 
-    /* Main Content Layout */
     .container {
       max-width: 1240px;
       margin: 24px auto;
@@ -206,7 +203,6 @@
       }
     }
 
-    /* Sidebar Navigation */
     .sidebar {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -290,7 +286,6 @@
       border-color: var(--primary);
     }
 
-    /* Workspace */
     .workspace {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -408,7 +403,6 @@
       display: block;
     }
 
-    /* Video Container */
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
@@ -460,7 +454,6 @@
       gap: 6px;
     }
 
-    /* Notes Box */
     .notes-box {
       background: #fdfdfd;
       border: 1px solid var(--border);
@@ -495,7 +488,6 @@
       font-size: 0.9rem;
     }
 
-    /* Quiz Area */
     .quiz-card {
       margin-bottom: 18px;
       background: var(--bg-main);
@@ -596,7 +588,6 @@
       margin-top: 18px;
     }
 
-    /* Modal - Parent Dashboard */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -727,7 +718,6 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="navbar">
       <a href="#" class="brand">
@@ -758,12 +748,11 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <div class="hero">
     <div class="hero-card">
       <div class="hero-text">
-        <h1 id="heroTitle">Virginia 9th Grade Daily SOL & Honors Tutor</h1>
-        <p>Daily rotating tuition schedule with historical archive access. Students can review previous days' materials or tackle today's new 15-question quiz.</p>
+        <h1 id="heroTitle">Virginia 9th Grade SOL & Honors Prep</h1>
+        <p>Targeted 30-minute daily tuition units with verified instructional video embeds, 15-question daily quizzes, and continuous parent reporting.</p>
       </div>
       <div class="hero-badge">
         <div class="timer-status">30-Min Session Timer</div>
@@ -772,15 +761,11 @@
     </div>
   </div>
 
-  <!-- Main Container -->
   <div class="container">
     <aside class="sidebar">
-      <!-- Daily Schedule & Archive Picker -->
       <div class="day-selector-card">
         <label><i class="fa-solid fa-calendar-day"></i> Select Day / Archive</label>
-        <select id="dayPicker" onchange="handleDayChange()">
-          <!-- Populated dynamically: Today + Past Days -->
-        </select>
+        <select id="dayPicker" onchange="handleDayChange()"></select>
       </div>
 
       <div>
@@ -806,7 +791,6 @@
         </div>
       </div>
 
-      <!-- Navigation Tabs -->
       <div class="module-tabs">
         <div class="module-tab active" onclick="switchTab('videoTab')">
           <i class="fa-solid fa-circle-play"></i> 1. Video Lesson (12m)
@@ -822,7 +806,8 @@
       <!-- Tab 1: Video -->
       <div id="videoTab" class="tab-content active">
         <div class="video-container">
-          <iframe id="videoFrame" src="" allowfullscreen></iframe>
+          <!-- The src attribute is dynamically populated by JavaScript -->
+          <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <div class="resource-links">
           <h4>Reputed Online Materials & Reference Guides</h4>
@@ -896,7 +881,6 @@
   </div>
 
   <script>
-    /* 1. CLOCK */
     function updateClock() {
       const now = new Date();
       const options = {
@@ -908,7 +892,6 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    /* 2. MULTI-DAY CURRICULUM DATABASE (Automated Daily Rotation & Historical Archive) */
     const dailyCurriculum = {
       "9": {
         "alg1": {
@@ -919,10 +902,10 @@
               dayNum: 1,
               title: "Multi-Step Linear Equations & Inequalities",
               sol: "SOL A.4a / A.5",
-              videoUrl: "https://www.youtube-nocookie.com/embed/f15zA03ZBWk",
+              videoUrl: "https://www.youtube-nocookie.com/embed/YpLSZdhOhtU",
               links: [
-                { name: "Khan Academy: Multi-step Equations", url: "https://www.khanacademy.org/math/algebra" },
-                { name: "VDOE Algebra I Practice Items", url: "https://www.doe.virginia.gov" }
+                { name: "Khan Academy: Multi-step Equations", url: "https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:solve-equations-inequalities" },
+                { name: "VDOE Algebra I Practice Items", url: "https://www.doe.virginia.gov/teaching-learning-assessment/student-assessment/sol-practice-items" }
               ],
               notes: `
                 <h3>Day 1: Multi-Step Equations & Inequalities</h3>
@@ -954,7 +937,7 @@
               dayNum: 2,
               title: "Slope-Intercept, Point-Slope & Graphing Functions",
               sol: "SOL A.6a / A.7",
-              videoUrl: "https://www.youtube-nocookie.com/embed/f3sI0_l8yeg",
+              videoUrl: "https://www.youtube-nocookie.com/embed/nc9XHXlxSyM",
               links: [
                 { name: "Khan Academy: Slope & Graphing", url: "https://www.khanacademy.org/math/algebra" }
               ],
@@ -993,15 +976,15 @@
           days: [
             {
               dayNum: 1,
-              title: "Scientific Method, Biochemistry & Cell Membranes",
+              title: "Scientific Method & Cell Structure Tour",
               sol: "SOL BIO.1 / BIO.2",
-              videoUrl: "https://www.youtube-nocookie.com/embed/URUJD5NEXC8",
+              videoUrl: "https://www.youtube-nocookie.com/embed/jsDxw63QqK0",
               links: [
                 { name: "NCBI Cell Biology Guide", url: "https://www.ncbi.nlm.nih.gov/books" },
                 { name: "Khan Academy: Cellular Organelles", url: "https://www.khanacademy.org/science/biology" }
               ],
               notes: `
-                <h3>Day 1: Research Biology - Cell Structure & Biochemistry</h3>
+                <h3>Day 1: Research Biology - Cell Structure</h3>
                 <ul>
                   <li><strong>Mitochondria & Chloroplasts:</strong> Endosymbiotic Theory (circular DNA, 70S ribosomes).</li>
                   <li><strong>Enzymes:</strong> Protein catalysts that lower activation energy ($E_a$).</li>
@@ -1028,18 +1011,18 @@
             },
             {
               dayNum: 2,
-              title: "Cellular Respiration, Photosynthesis & Bioenergetics",
+              title: "Cell Membranes & Transport Mechanisms",
               sol: "SOL BIO.2c / BIO.2d",
-              videoUrl: "https://www.youtube-nocookie.com/embed/00jbG_cfGuQ",
+              videoUrl: "https://www.youtube-nocookie.com/embed/9Ia8zH-qMZw",
               links: [
-                { name: "Khan Academy: Cellular Respiration", url: "https://www.khanacademy.org/science/biology" }
+                { name: "Khan Academy: Cell Transport", url: "https://www.khanacademy.org/science/biology" }
               ],
               notes: `
-                <h3>Day 2: Bioenergetics (ATP, Respiration, Photosynthesis)</h3>
+                <h3>Day 2: Membrane Transport</h3>
                 <ul>
-                  <li><strong>Photosynthesis Equation:</strong> <span class="formula-badge">6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂</span></li>
-                  <li><strong>Cellular Respiration:</strong> Glycolysis (Cytoplasm) $\rightarrow$ Krebs Cycle (Mitochondrial Matrix) $\rightarrow$ Electron Transport Chain (Inner Membrane).</li>
-                  <li><strong>ATP Yield:</strong> Aerobic respiration produces ~36-38 ATP per glucose.</li>
+                  <li><strong>Passive Transport:</strong> Movement from High to Low concentration without ATP (Diffusion, Osmosis, Facilitated).</li>
+                  <li><strong>Active Transport:</strong> Movement against the gradient utilizing ATP (e.g., Sodium-Potassium Pump).</li>
+                  <li><strong>Endocytosis/Exocytosis:</strong> Bulk transport of large molecules utilizing vesicles.</li>
                 </ul>
               `,
               quiz: [
@@ -1068,19 +1051,19 @@
           days: [
             {
               dayNum: 1,
-              title: "River Valleys, Ancient Greece & Roman Republic",
-              sol: "SOL WHI.3 / WHI.5 / WHI.6",
-              videoUrl: "https://www.youtube-nocookie.com/embed/kIID5FDi2JQ",
+              title: "River Valley Civilizations",
+              sol: "SOL WHI.3",
+              videoUrl: "https://www.youtube-nocookie.com/embed/491kZY4MXCo",
               links: [
                 { name: "Met Museum: Ancient Near East", url: "https://www.metmuseum.org" },
                 { name: "Khan Academy: Ancient Civilizations", url: "https://www.khanacademy.org/humanities/world-history" }
               ],
               notes: `
-                <h3>Day 1: Early Civilizations & Classical Antiquity</h3>
+                <h3>Day 1: River Valley Civilizations</h3>
                 <ul>
-                  <li><strong>Mesopotamia:</strong> Tigris & Euphrates, Cuneiform, Hammurabi's Code.</li>
-                  <li><strong>Athens vs Sparta:</strong> Direct democracy vs military oligarchy.</li>
-                  <li><strong>Rome:</strong> Twelve Tables, Pax Romana under Augustus.</li>
+                  <li><strong>Mesopotamia:</strong> Tigris & Euphrates rivers; development of Cuneiform and Hammurabi's Code.</li>
+                  <li><strong>Egypt:</strong> Nile River; hierarchical social structures and hieroglyphics.</li>
+                  <li><strong>Indus Valley:</strong> Harappa and Mohenjo-Daro; advanced urban planning.</li>
                 </ul>
               `,
               quiz: [
@@ -1103,20 +1086,20 @@
             }
           ]
         },
-        "eng9a": {
-          name: "English 9A",
+        "eng9h": {
+          name: "English 9 - H honors",
           icon: "fa-book",
           days: [
             {
               dayNum: 1,
-              title: "Rhetorical Appeals, Syntax & Literary Analysis",
-              sol: "SOL 9.3 / 9.4 / 9.6",
-              videoUrl: "https://www.youtube-nocookie.com/embed/qYmDk3rF5V4",
+              title: "Rhetorical Appeals (Ethos, Pathos, Logos)",
+              sol: "SOL 9.3 / 9.4",
+              videoUrl: "https://www.youtube-nocookie.com/embed/t4ODg51XNYk",
               links: [
-                { name: "Purdue OWL: Literary Analysis", url: "https://owl.purdue.edu" }
+                { name: "Purdue OWL: Rhetorical Appeals", url: "https://owl.purdue.edu" }
               ],
               notes: `
-                <h3>Day 1: English 9A - Rhetoric & Literary Grammar</h3>
+                <h3>Day 1: English 9 Honors - Rhetoric</h3>
                 <ul>
                   <li><strong>Appeals:</strong> Ethos (credibility), Pathos (emotion), Logos (reason).</li>
                   <li><strong>Active Voice:</strong> Subject acts directly.</li>
@@ -1140,6 +1123,40 @@
                 { q: "Identify the oxymoron:", opts: ["Deafening silence", "Bright light", "Running quickly", "Cold winter"], ans: 0, exp: "Juxtaposition of contradictory words.", ref: "https://owl.purdue.edu" },
                 { q: "What does the root 'bene' mean?", opts: ["Harmful", "Good / Well", "Ancient", "Life"], ans: 1, exp: "'Bene' means good or well in Latin.", ref: "https://owl.purdue.edu" }
               ]
+            },
+            {
+              dayNum: 2,
+              title: "Literary Devices & Figurative Language",
+              sol: "SOL 9.4 / 9.5",
+              videoUrl: "https://www.youtube-nocookie.com/embed/86kknlI27_E",
+              links: [
+                { name: "Purdue OWL: Literary Devices", url: "https://owl.purdue.edu" }
+              ],
+              notes: `
+                <h3>Day 2: Literary Devices</h3>
+                <ul>
+                  <li><strong>Alliteration:</strong> Repetition of initial consonant sounds.</li>
+                  <li><strong>Hyperbole:</strong> Deliberate and extreme exaggeration for emphasis.</li>
+                  <li><strong>Onomatopoeia:</strong> Words that phonetically imitate the sound they describe.</li>
+                </ul>
+              `,
+              quiz: [
+                { q: "Identify the literary device: 'Peter Piper picked a peck of pickled peppers.'", opts: ["Alliteration", "Assonance", "Consonance", "Onomatopoeia"], ans: 0, exp: "Repetition of initial consonant 'p' sounds is alliteration.", ref: "https://owl.purdue.edu" },
+                { q: "'I have told you a million times!' is an example of:", opts: ["Hyperbole", "Understatement", "Irony", "Euphemism"], ans: 0, exp: "Extreme exaggeration for emphasis is hyperbole.", ref: "https://owl.purdue.edu" },
+                { q: "The formation of a word from a sound associated with what is named (e.g. 'buzz', 'sizzle') is:", opts: ["Onomatopoeia", "Alliteration", "Synecdoche", "Metonymy"], ans: 0, exp: "Onomatopoeia mimics natural sounds phonetically.", ref: "https://owl.purdue.edu" },
+                { q: "A poem consisting of 14 lines in iambic pentameter with a specific rhyme scheme is a:", opts: ["Sonnet", "Haiku", "Villanelle", "Ballad"], ans: 0, exp: "A 14-line iambic pentameter poem is a Sonnet.", ref: "https://owl.purdue.edu" },
+                { q: "What is an unrhymed iambic pentameter known as in English literature?", opts: ["Blank Verse", "Free Verse", "Heroic Couplet", "Elegy"], ans: 0, exp: "Blank verse is unrhymed verse in iambic pentameter.", ref: "https://owl.purdue.edu" },
+                { q: "A comparison using 'like' or 'as' is a:", opts: ["Simile", "Metaphor", "Personification", "Hyperbole"], ans: 0, exp: "Similes explicitly compare two things using like or as.", ref: "https://owl.purdue.edu" },
+                { q: "A reference in a literary work to a person, place, or event in history or literature is an:", opts: ["Allusion", "Illusion", "Allegory", "Anecdote"], ans: 0, exp: "An allusion refers to an outside cultural, historical, or literary work.", ref: "https://owl.purdue.edu" },
+                { q: "When an author hints at what is to come later in the plot, this is:", opts: ["Foreshadowing", "Flashback", "Juxtaposition", "Denouement"], ans: 0, exp: "Foreshadowing provides advance clues about future events.", ref: "https://owl.purdue.edu" },
+                { q: "A statement that seems contradictory or absurd but may express an underlying truth is a:", opts: ["Paradox", "Oxymoron", "Pun", "Hyperbole"], ans: 0, exp: "A paradox is a self-contradictory statement revealing deeper truth.", ref: "https://owl.purdue.edu" },
+                { q: "A stanza composed of four lines in poetry is called a:", opts: ["Quatrain", "Couplet", "Sestet", "Octave"], ans: 0, exp: "A 4-line poetic unit is a quatrain.", ref: "https://owl.purdue.edu" },
+                { q: "Giving inanimate objects human qualities is:", opts: ["Personification", "Anthropomorphism", "Zoomorphism", "Metaphor"], ans: 0, exp: "Personification endows non-human things with human qualities.", ref: "https://owl.purdue.edu" },
+                { q: "What is the rhyme scheme of an English (Shakespearean) Sonnet?", opts: ["ABAB CDCD EFEF GG", "ABBA ABBA CDE CDE", "AABB CCDD EEFF GG", "AAAA BBBB CCCC DD"], ans: 0, exp: "Shakespearean sonnets follow ABAB CDCD EFEF GG.", ref: "https://owl.purdue.edu" },
+                { q: "When a speaker says one thing but means the complete opposite, this is:", opts: ["Verbal Irony", "Situational Irony", "Dramatic Irony", "Cosmic Irony"], ans: 0, exp: "Verbal irony occurs when stated words contrast intended meaning.", ref: "https://owl.purdue.edu" },
+                { q: "A poem of serious reflection, typically a lament for the dead, is an:", opts: ["Elegy", "Ode", "Epic", "Epigram"], ans: 0, exp: "An elegy is a formal mourning poem.", ref: "https://owl.purdue.edu" },
+                { q: "The repetition of vowel sounds within nearby words is:", opts: ["Assonance", "Consonance", "Alliteration", "Euphony"], ans: 0, exp: "Assonance is the repetition of internal vowel sounds.", ref: "https://owl.purdue.edu" }
+              ]
             }
           ]
         },
@@ -1149,9 +1166,9 @@
           days: [
             {
               dayNum: 1,
-              title: "Preterite vs Imperfect & Irregular Past Conjugations",
+              title: "Preterite vs Imperfect Masterclass",
               sol: "VA FL Standards: S-II",
-              videoUrl: "https://www.youtube-nocookie.com/embed/8eW7K3wX9q8",
+              videoUrl: "https://www.youtube-nocookie.com/embed/JyhvXt2oyFQ",
               links: [
                 { name: "StudySpanish: Preterite vs Imperfect", url: "https://studyspanish.com" }
               ],
@@ -1180,12 +1197,45 @@
                 { q: "Which sentence correctly replaces 'le lo'?", opts: ["Yo le lo doy.", "Yo se lo doy.", "Yo lo le doy.", "Yo me lo se."], ans: 1, exp: "'Le' changes to 'se' before 'lo': Yo se lo doy.", ref: "https://studyspanish.com" },
                 { q: "How do you say 'We were studying while he was cooking'?", opts: ["Estudiamos mientras cocinó.", "Estudiábamos mientras cocinaba.", "Estudiamos mientras cocinaba.", "Estudiábamos cocinó."], ans: 1, exp: "Two simultaneous ongoing past actions linked by 'mientras' use imperfect.", ref: "https://studyspanish.com" }
               ]
+            },
+            {
+              dayNum: 2,
+              title: "Double Object Pronouns",
+              sol: "VA FL Standards: S-II Grammar",
+              videoUrl: "https://www.youtube-nocookie.com/embed/6chhVn9DQgk",
+              links: [
+                { name: "SpanishDict: Double Object Pronouns", url: "https://www.spanishdict.com" }
+              ],
+              notes: `
+                <h3>Day 2: Direct & Indirect Object Pronouns</h3>
+                <ul>
+                  <li><strong>Direct Object Pronouns (DOP):</strong> me, te, lo/la, nos, os, los/las.</li>
+                  <li><strong>Indirect Object Pronouns (IOP):</strong> me, te, le, nos, os, les.</li>
+                  <li><strong>Order:</strong> IOP comes before DOP ("People before Things" $\rightarrow$ <em>me lo, te la, se los</em>).</li>
+                </ul>
+              `,
+              quiz: [
+                { q: "Replace the direct object: 'Compro la manzana.'", opts: ["La compro.", "Lo compro.", "Le compro.", "Las compro."], ans: 0, exp: "'La manzana' is direct object feminine singular: La compro.", ref: "https://studyspanish.com" },
+                { q: "Replace the indirect object: 'Escribo una carta a mis padres.'", opts: ["Les escribo una carta.", "Los escribo una carta.", "Le escribo una carta.", "Se escribo una carta."], ans: 0, exp: "'A mis padres' (plural recipient) takes IOP 'les'.", ref: "https://studyspanish.com" },
+                { q: "When using DOP and IOP together, which pronoun comes first?", opts: ["Indirect Object Pronoun (IOP)", "Direct Object Pronoun (DOP)", "The Verb", "Subject Pronoun"], ans: 0, exp: "The IOP always precedes the DOP (People before Things).", ref: "https://studyspanish.com" },
+                { q: "Replace both objects: 'Doy el regalo a ti.'", opts: ["Te lo doy.", "Lo te doy.", "Se lo doy.", "Me lo das."], ans: 0, exp: "'A ti' = te, 'el regalo' = lo -> Te lo doy.", ref: "https://studyspanish.com" },
+                { q: "Why does 'le lo' change to 'se lo' in Spanish?", opts: ["To avoid awkward 'l-l' alliteration sound", "Because it is plural", "Grammar rule for past tense", "To show emphasis"], ans: 0, exp: "'Le' and 'les' become 'se' before 'lo/la/los/las' for phonological flow.", ref: "https://studyspanish.com" },
+                { q: "Where can object pronouns attach directly?", opts: ["To the end of an infinitive verb", "To a conjugated verb", "To a noun", "Before a preposition"], ans: 0, exp: "Pronouns attach to infinitives, gerunds, or affirmative commands.", ref: "https://studyspanish.com" },
+                { q: "Translate: 'I want to buy it (the book - el libro).'", opts: ["Quiero comprarlo.", "Lo quiero comprar.", "Both A and B are correct.", "Quiero lo comprar."], ans: 2, exp: "Pronouns can either precede the conjugated verb or attach to the infinitive.", ref: "https://studyspanish.com" },
+                { q: "Replace the direct object: 'Ellos comen los tacos.'", opts: ["Ellos los comen.", "Ellos les comen.", "Ellos lo comen.", "Ellos se comen."], ans: 0, exp: "'Los tacos' is masculine plural direct object: los.", ref: "https://studyspanish.com" },
+                { q: "In 'María me da el dinero', what is 'me'?", opts: ["Indirect Object Pronoun", "Direct Object Pronoun", "Subject", "Possessive adjective"], ans: 0, exp: "'Me' represents the recipient of the money (IOP).", ref: "https://studyspanish.com" },
+                { q: "Translate: 'She told it to us.'", opts: ["Ella nos lo dijo.", "Ella lo nos dijo.", "Ella se lo dijo.", "Ella nos la dijo."], ans: 0, exp: "Nos (to us) + lo (it) + dijo (said).", ref: "https://studyspanish.com" },
+                { q: "Replace both objects: 'El profesor explica la lección a los estudiantes.'", opts: ["El profesor se la explica.", "El profesor les la explica.", "El profesor la les explica.", "El profesor se lo explica."], ans: 0, exp: "Les la -> se la ('la lección' is feminine).", ref: "https://studyspanish.com" },
+                { q: "Which of the following is a Direct Object Pronoun?", opts: ["las", "les", "le", "su"], ans: 0, exp: "'Las' is feminine plural DOP; 'les' and 'le' are IOPs.", ref: "https://studyspanish.com" },
+                { q: "Translate: 'Are you listening to me?'", opts: ["¿Me escuchas?", "¿Me escucho?", "¿Te escucho?", "¿Lo escuchas?"], ans: 0, exp: "'¿Me escuchas?' translates to 'Are you listening to me?'.", ref: "https://studyspanish.com" },
+                { q: "Where does the pronoun go in a negative command (e.g. 'Don't do it!')?", opts: ["Between 'no' and the verb", "Attached to the verb", "At the end of the sentence", "Anywhere"], ans: 0, exp: "Negative commands place pronouns before the verb: ¡No lo hagas!", ref: "https://studyspanish.com" },
+                { q: "Replace the DOP in: 'Nosotros vemos la película.'", opts: ["Nosotros la vemos.", "Nosotros lo vemos.", "Nosotros le vemos.", "Nosotros las vemos."], ans: 0, exp: "'La película' is feminine singular: la.", ref: "https://studyspanish.com" }
+              ]
             }
           ]
         }
       },
 
-      /* Grade 10-12 Shells */
       "10": {
         "geom": {
           name: "Geometry",
@@ -1261,7 +1311,7 @@
               dayNum: 1,
               title: "Constitutional Principles & Federalism",
               sol: "SOL GOVT.3",
-              videoUrl: "https://www.youtube-nocookie.com/embed/lrk4oY7UUpQ",
+              videoUrl: "https://www.youtube-nocookie.com/embed/CZ_5Bn14rkg",
               links: [{ name: "National Constitution Center", url: "https://constitutioncenter.org" }],
               notes: `<h3>Day 1: Constitutional Structure</h3><p>Separation of powers across Legislative (Art I), Executive (Art II), and Judicial (Art III).</p>`,
               quiz: [
@@ -1287,7 +1337,6 @@
       }
     };
 
-    /* 3. APP STATE & DAILY CALCULATOR */
     let currentGrade = "9";
     let currentSubjectKey = "alg1";
     let currentSelectedDay = 1;
@@ -1298,14 +1347,13 @@
     let timerInterval = null;
     let isRunning = false;
 
-    // Calculate dynamic "Today" day-number based on day of the year
     function calculateTodayDayNumber() {
       const now = new Date();
       const start = new Date(now.getFullYear(), 0, 0);
       const diff = now - start;
       const oneDay = 1000 * 60 * 60 * 24;
       const dayOfYear = Math.floor(diff / oneDay);
-      return (dayOfYear % 30) + 1; // 30-day curriculum cycle
+      return (dayOfYear % 30) + 1;
     }
 
     const todayDayNumber = calculateTodayDayNumber();
@@ -1321,13 +1369,11 @@
       const picker = document.getElementById("dayPicker");
       picker.innerHTML = "";
 
-      // Add "Today"
       const optToday = document.createElement("option");
       optToday.value = todayDayNumber;
       optToday.innerText = `⭐ Today's Lesson (Day ${todayDayNumber})`;
       picker.appendChild(optToday);
 
-      // Add Past Days archive
       for (let d = todayDayNumber - 1; d >= 1; d--) {
         const opt = document.createElement("option");
         opt.value = d;
@@ -1335,13 +1381,12 @@
         picker.appendChild(opt);
       }
 
-      // If today is day 1, populate earlier cycle days so student can test history
-      if (todayDayNumber === 1) {
-        const opt2 = document.createElement("option");
-        opt2.value = 2;
-        opt2.innerText = `📅 Day 2 (Upcoming / Alternate)`;
-        picker.appendChild(opt2);
-      }
+      // Add a fallback rotation so users can always see Day 2 functionality
+      const nextDay = (todayDayNumber % 30) + 1;
+      const optNext = document.createElement("option");
+      optNext.value = nextDay;
+      optNext.innerText = `📅 Day ${nextDay} (Upcoming/Alternate)`;
+      picker.appendChild(optNext);
 
       picker.value = currentSelectedDay;
     }
@@ -1386,7 +1431,6 @@
       const sub = dailyCurriculum[currentGrade][currentSubjectKey];
       const availableDays = sub.days;
       
-      // Select exact day or wrap around available lessons
       let topic = availableDays.find(d => d.dayNum === currentSelectedDay);
       if (!topic) {
         const wrapIdx = (currentSelectedDay - 1) % availableDays.length;
@@ -1452,7 +1496,6 @@
       element.querySelector('i').className = 'fa-solid fa-circle-dot';
     }
 
-    /* 4. QUIZ SUBMISSION WITH REMEDIATION & HISTORICAL LOGGING */
     function submitQuiz() {
       const sub = dailyCurriculum[currentGrade][currentSubjectKey];
       const availableDays = sub.days;
@@ -1521,7 +1564,6 @@
       updateParentDashboardStats();
     }
 
-    /* 5. PARENT PORTAL CONTROLS */
     function openParentModal() {
       updateParentDashboardStats();
       document.getElementById("parentModal").classList.add("active");
@@ -1588,7 +1630,6 @@
       event.currentTarget.classList.add('active');
     }
 
-    /* 6. 30-MINUTE TIMER */
     function toggleTimer() {
       const btn = document.getElementById("timerBtn");
       if (isRunning) {
